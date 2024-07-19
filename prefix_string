@@ -1,0 +1,21 @@
+"""Python code to find maximum repeated prefix in list of strings """
+#find minimum string
+# iterate through min string length , match with other strings 
+def longest_prefix(strings_list):
+    max_prefix = ""
+
+    if not strings_list:
+        return max_prefix
+    
+    #ip = ["apply", "application", "ape", "apples"]
+    min_pref = min(strings_list, key=len)
+
+    for i in range(0, len(min_pref)):
+        if all([s.startswith(min_pref[:i+1]) for s in strings_list]):
+            max_prefix = min_pref[:i+1]
+        else:
+            break
+            
+    return max_prefix
+
+print(longest_prefix(["apply", "application", "ppe", "apples"]))
